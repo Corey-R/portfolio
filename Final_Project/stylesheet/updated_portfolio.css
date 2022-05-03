@@ -15,6 +15,7 @@ body {
     font-size: 1.5vw; 
     overflow-x: hidden; /* This prevents the horizontal scroll bar from appearing when the quote is hovered over */
     user-select: none; /* This prevents the text on the webpage from being highlighted by the user */
+	background: black;
 }
 
 /* This section contributes to the fade effect for the page that occurs when the page is loaded */
@@ -28,7 +29,7 @@ h1 {
     font-family: "Trebuchet MS", Optima; /* Sets the font family of all h1 headings */
     text-align: center; /* Centering all h1 elements */
     margin-top: 3%; /* Adds a small margin above h1 elements */
-    color: orangered; 
+    color: rgb(169,169,169);
 }
 
 /* Heading 1 element hover effect */
@@ -38,12 +39,23 @@ h1:hover {
     transition: transform 1s; /* This causes the transformation to last 1 second */
 }
 
+
 /* Styling for Portfolio Title Text */
 .white-text {
-    color: orangered;/* This is used to change the color of the Portfolio Title text */
+    color: rgba(169,169,169,0.8);/* This is used to change the color of the Portfolio Title text */
     padding-top: 10vh; /* Adds padding (equal to 10% of the viewport height) to the top of the Portfolio Title text */
+    margin-bottom: 2vw;
 }
 
+.project-subheading {
+    margin-top: 5vw;
+    margin-bottom: 1vw;
+}
+
+
+.Background {
+    background: black;
+}
 /* Paragraph elements */
 p {
     font-family: Perpetua, Rockwell Extra Bold;
@@ -59,6 +71,11 @@ p:hover {
     transition: transform 1s; /* This makes the transform effect last 1 second */
 	transform: scale(1.01); /* This makes the paragraphs increase slightly in size when hovered over */
 }
+.home-paragraphs, .projects-container {
+    padding-left: 10vw;
+    padding-right: 10vw;
+    color: white;
+}
 
 /* Center class - this applies to all centered text */
 .center {
@@ -72,17 +89,36 @@ p:hover {
 }
 
 /* Anchor elements */
-a {
-    color: blue; /* This ensures all links are blue */
+a, p a, .center a {
+    color: lightblue; /* This ensures all links are blue */
     cursor: pointer; /* This ensures all links change the mouse to a pointer when hovered over or clicked */
     text-decoration: underline; /* This ensures all links are underlined */
+}
+a:hover, p a:hover, .center a:hover {
+    color: yellow;
 }
 
 /* Quotation elements */
 q {
     font-style: italic; /* Makes the quote italicized */
 }
+.quotes {
+    text-align: center;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
 
+
+.image-container {
+    display: flex;
+    margin-bottom: 3vw;
+    max-width: 100%;
+    height: 14vw;
+}
+.img-style {
+    border: 2px solid midnightblue;
+    margin: 2vw;
+}
 /* Image elements */
 img {
     filter: grayscale(75%); /* This rids our pictures of 75% of their color */
@@ -108,9 +144,13 @@ img:hover {
 }
 
 /*Styling for footer element */
-footer {
+.footer {
     padding: 2%; /* This gives the footer padding that is equal to 2% of the width of the element's area */
-    background-color: white;
+    position: fixed; /* The element is positioned relative to the viewport and stays in the same location no matter what */
+    color: white;
+    bottom: 1.75vw;
+    width: 25vw;
+    left: 25vw;
 }
 /***** End of General Styling *****/
 
@@ -118,13 +158,14 @@ footer {
 .Navbar {
     overflow: hidden; /* This ensures that any content that overflows beyond the boundary of our nav bar is not displayed */
     background-color: black; /* This colors the navbar black */
+    color: white;
     position: fixed; /* This keeps the navbar at the top of the screen as we scroll */
     top: 0; /* This ensures no space is displayed above the navbar */
     width: 100%; /* This makes the navbar span the entire width of the page */
     z-index: 1; /* This ensures other elements don't display over the navbar */
     -webkit-animation: moveNav 5s; /* Safari 4.0 - 8.0 */
-    animation: moveNav 5s; /* This makes the moveNav animation last 5 seconds */
-    border-bottom: 5px solid darkblue;
+    animation: moveNav 1.5s; /* This makes the moveNav animation last 1.5 seconds */
+    border-bottom: 5px solid rgba(169,169,169,0.6);
 }
 
 /* The animation effect for moving the nav bar in from above the left of the screen on page load */
@@ -144,8 +185,8 @@ footer {
     font-size: 1.5vw; /* This specifies the font size for text on our navbar */
     text-align: center; /* This centers the text within its container */
     position: relative; /* This sets the text relative to its normal positioning, allowing us to use the animation below */
-    -webkit-animation: moveNavText 5.75s; /* Animation for Safari 4.0 - 8.0 */
-    animation: moveNavText 5.75s; /* Applies the moveNavText animation for 5.75s */ 
+    -webkit-animation: moveNavText 3.5s; /* Animation for Safari 4.0 - 8.0 */
+    animation: moveNavText 1s; /* Applies the moveNavText animation for 1s */
 }
 
 
@@ -165,7 +206,7 @@ footer {
 
 /*Navbar hover effects */
 .Navbar a:hover {
-    background-color: orangered; /* Defines the background color that will display when you hover over the link */
+    background-color: midnightblue; /* Defines the background color that will display when you hover over the link */
     color: white; /* This defines the font color that will display when navbar a elements are hovered over */
     font-weight: bold; /* This makes the text on the navbar bold when hovered over */
     cursor: pointer;
@@ -174,7 +215,7 @@ footer {
 
 /* Navbar home button */
 .Navbar a.active { /* This targets the a element on the navbar with the "active" class */
-    background-color: darkblue;
+    background-color: rgba(169,169,169,0.6);
 }
 /***** End of Navbar Styling *****/
 
@@ -203,8 +244,8 @@ footer {
     height: 100vh; /* This ensures the video-text container fills the height of the viewport so that the slideshow is not partially displayed */
     padding-top: 2vh; /* This adds padding around the video-text container so that the background goes slightly beyond the text */
     position: relative; /* This sets the text relative to its normal positioning, allowing us to use the animation below */
-    -webkit-animation: moveVideoText 5.75s; /* Animation for Safari 4.0 - 8.0 */
-    animation: moveVideoText 5.75s; /* moveVideoText animation set to 5.75s to match the movenavText animation */
+    -webkit-animation: moveVideoText 2s; /* Animation for Safari 4.0 - 8.0 */
+    animation: moveVideoText 2S; /* moveVideoText animation set to 2s to match the movenavText animation */
 }
 
 /* This animation effect causes the overlay video text to move up from the bottom of the page upon page load */
@@ -216,7 +257,7 @@ footer {
 
 /***** Slideshow Styling *****/
 #Slideshow_Background {
-    background: rgba(255, 255, 255, 0.35); /* This creates a slightly transparent white background that's palced over the video in the background */    
+     /* This creates a slightly transparent white background that's palced over the video in the background */
 }
 
 .mySlides{
@@ -225,7 +266,7 @@ footer {
 
 /* Slideshow section / container */
 #Slideshow_Container {
-    width: 39.5vw; /* Relative sizing of the container for the slidewshow set to 39.5% of the viewport width */
+    width: 40%;; /* Relative sizing of the container for the slidewshow set to 39.5% of the viewport width */
     height: auto; /* The height of the container is automatically adjusted based on the content it is displaying */
     padding-top: 4%; /* Adds a small padding to the top of the slideshow container */
     position: relative; /* This sets the container relative to its normal positioning */
@@ -237,7 +278,7 @@ footer {
     vertical-align: middle; /* This centers the images vertically within the slideshow container */
     height: auto; /* The height of the images is automatically adjusted based on the content, ie if your images are different sizes, they will display as different sizes */
     box-shadow: 0px 5px 10px 12px rgba(0, 0, 0, .75); /* Adds a shadow around the slideshow images */
-    width: 100%; /* The width of the images is automatically adjusted based on the content */
+    width: 50%; /* The width of the images is automatically adjusted based on the content */
 }
 
 /* Next and previous buttons */
@@ -331,7 +372,7 @@ footer {
     padding: 1.6%;
     color: #fff;
     height: 450px; /* This sets the height of the column to 400px -  this may need to be adjusted depending on the text you enter */
-    background-color: blue; /* Sets the background color of the left columns */
+    background-color: black; /* Sets the background color of the left columns */
 }
 
 /* The @media rule is used in media queries to apply different styles for different media/types of devices */
@@ -369,8 +410,8 @@ footer {
     color: black; /* Sets the color of the button text to black */
     border: solid black; /* This makes a solid black border around the button */
     cursor: pointer; /* This changes the cursor when hovered over the button to a pointer */
-    -webkit-animation: movePopup 5s; /* Animation for 5 seconds for Safari 4.0-8.0 */
-    animation: movePopup 5s; /* Animation set for 5 seconds */
+    -webkit-animation: movePopup 1.5S; /* Animation for 1.5 seconds for Safari 4.0-8.0 */
+    animation: movePopup 1.5s; /* Animation set for 1.5 seconds */
 }
 
 /* movePopup animation moves the button from off the right side of the screen to its fixed location on the viewport */
@@ -450,6 +491,8 @@ button:hover {
     color: black;
     border-color: black;
     margin-bottom: 1vh; /* Adds space between the submit button and the close button */
+    max-width: 50%;
+    height: 2;
 }
 
 /* Submit button hover effects */
@@ -466,6 +509,8 @@ button:hover {
     background-color: red;
     color: white;
     border-color: gray;
+    max-width: 50%;
+    height: 2;
 }
 
 /* Styling for close button on hover */
@@ -476,4 +521,9 @@ button:hover {
     -webkit-transition-duration: 1s;
     border-color: black;
 }
+.row {
+    text-align: center;
+    margin-top: 16px;
+}
 /***** End of Contact Form Styling *****/
+
